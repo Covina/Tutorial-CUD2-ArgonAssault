@@ -19,6 +19,10 @@ public class Player : MonoBehaviour {
     [SerializeField] private float positionYawFactor = 5.0f;
     [SerializeField] private float controlYawFactor = 25.0f;
 
+
+    [SerializeField] private float controlRollFactor = -20.0f;
+
+
     private float xThrow, yThrow;
 
     // Use this for initialization
@@ -74,7 +78,9 @@ public class Player : MonoBehaviour {
         float yawDueToControlThrow = xThrow * controlYawFactor;
         float yaw = yawDueToPosition + yawDueToControlThrow;
 
-        float roll = 0f; 
+
+        float roll = xThrow * controlRollFactor;
+
 
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
 

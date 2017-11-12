@@ -681,10 +681,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8cd309f4065963458e27c1aeb1e759a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSpeed: 8
+  xSpeed: 6
   xAxisClamp: 5.5
-  yAxisClamp: 2.5
+  yAxisClamp: 3
   positionPitchFactor: -5
   controlPitchFactor: -20
   positionYawFactor: 5
   controlYawFactor: 20
+  controlRollFactor: -20
