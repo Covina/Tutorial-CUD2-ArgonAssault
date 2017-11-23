@@ -87,4 +87,19 @@ public class Player : MonoBehaviour {
 
     }
 
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        print("Player collided with: " + collision.gameObject);
+
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+
+        print("Player triggered with: " + collider.gameObject);
+
+    }
+
 }
