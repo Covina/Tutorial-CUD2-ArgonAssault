@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4912500205679992}
   - component: {fileID: 33698187557501284}
   - component: {fileID: 23834438905531766}
-  - component: {fileID: 65421106286628644}
+  - component: {fileID: 114922718822803116}
   m_Layer: 0
   m_Name: Ship_03
   m_TagString: Untagged
@@ -81,15 +81,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1476669606989768}
   m_Mesh: {fileID: 4300002, guid: ec2ed6fafcc53c64ba923b9ef7d5749f, type: 3}
---- !u!65 &65421106286628644
-BoxCollider:
+--- !u!114 &114922718822803116
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1476669606989768}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6466485, y: 0.6331278, z: 0.0915108}
-  m_Center: {x: 0.0000019073486, y: -0.00000047683716, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb4f2f8776aa084cbaef05410374235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyExplosionPFX: {fileID: 1153645589080510, guid: ecd5550108d0b7747822393b788f9170,
+    type: 2}

@@ -7,7 +7,20 @@ public class MusicPlayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        DontDestroyOnLoad(gameObject);
+
+        // Pseudo singleton
+        int numMusicPlayers = FindObjectsOfType<MusicPlayer>().Length;
+
+        if(numMusicPlayers > 1)
+        {
+            Destroy(gameObject);
+
+        } else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
+        
 
     }
 	

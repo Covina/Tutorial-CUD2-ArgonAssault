@@ -3,27 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
 
-    [Tooltip("In ms^-1")] [SerializeField] private float xSpeed = 6.0f;
-
-
+    [Header("General")]
+    [Tooltip("In ms^-1")] [SerializeField] private float xControlSpeed = 6.0f;
     [SerializeField] private float xAxisClamp = 4.75f;    // Left/Right limits
     [SerializeField] private float yAxisClamp = 2.5f;    // Up/Down limits
 
-
+    [Header("Screen Position")]
     [SerializeField] private float positionPitchFactor = -5.0f;
-    [SerializeField] private float controlPitchFactor = -25.0f;
-
     [SerializeField] private float positionYawFactor = 5.0f;
+
+    [Header("Control Throw")]
+    [SerializeField] private float controlPitchFactor = -25.0f;
     [SerializeField] private float controlYawFactor = 25.0f;
-
-
     [SerializeField] private float controlRollFactor = -20.0f;
 
 
     private float xThrow, yThrow;
+
+
+    private bool isPlayerAlive = true;
 
     // Use this for initialization
     void Start () {
@@ -34,8 +35,13 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        ProcessTranslation();
-        ProcessRotation();
+
+        if(isPlayerAlive)
+        {
+            ProcessTranslation();
+            ProcessRotation();
+
+        }
 
     }
 
@@ -46,8 +52,8 @@ public class Player : MonoBehaviour {
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
 
         // Calculate the increment of how far the player should move
-        float xOffset = xThrow * xSpeed * Time.deltaTime;
-        float yOffset = yThrow * xSpeed * Time.deltaTime;
+        float xOffset = xThrow * xControlSpeed * Time.deltaTime;
+        float yOffset = yThrow * xControlSpeed * Time.deltaTime;
 
         // Calculate new position
         float rawXPos = transform.localPosition.x + xOffset;
@@ -95,10 +101,14 @@ public class Player : MonoBehaviour {
 
     }
 
-    private void OnTriggerEnter(Collider collider)
+    /// <summary>
+    /// Kill player controls when the player dies
+    /// CALLED BY STRING REFERENCE
+    /// </summary>
+    public void KillPlayerControls()
     {
-
-        print("Player triggered with: " + collider.gameObject);
+        print("KillPlayerControls() called");
+        isPlayerAlive = false;
 
     }
 
