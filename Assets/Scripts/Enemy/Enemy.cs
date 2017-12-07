@@ -10,8 +10,10 @@ public class Enemy : MonoBehaviour {
 
     private Scoreboard scoreboard;
 
-	// Use this for initialization
-	void Start ()
+    [SerializeField] private int scorePerHit = 12;
+
+    // Use this for initialization
+    void Start ()
     {
         AddNonTriggerBoxCollider();
 
@@ -45,7 +47,7 @@ public class Enemy : MonoBehaviour {
     {
         // print("Particles collided with enemy: " + gameObject.name);
 
-        scoreboard.ScoreHit();
+        scoreboard.ScoreHit(scorePerHit);
 
         //
         EnemyDeathSequence();
@@ -58,10 +60,8 @@ public class Enemy : MonoBehaviour {
     {
 
         // Play Particle Effect
-        // TODO - add particle effect enemy explosion
         GameObject pfxExplosion = Instantiate(enemyExplosionPFX, transform.position, Quaternion.identity);
         pfxExplosion.transform.parent = spawnParent;
-
 
         // Destroy Enemy
         Destroy(gameObject);
