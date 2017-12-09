@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23679648990845770}
   - component: {fileID: 114612615310325192}
   m_Layer: 0
-  m_Name: Ship_05
+  m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,3 +94,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyExplosionPFX: {fileID: 1153645589080510, guid: ecd5550108d0b7747822393b788f9170,
     type: 2}
+  spawnParent: {fileID: 0}
+  scorePerHit: 12
+  maxHits: 10

@@ -8,9 +8,11 @@ public class Enemy : MonoBehaviour {
     [SerializeField] private GameObject enemyExplosionPFX;
     [SerializeField] Transform spawnParent;
 
-    private Scoreboard scoreboard;
-
     [SerializeField] private int scorePerHit = 12;
+
+    [SerializeField] private int maxHits = 10;
+
+    private Scoreboard scoreboard;
 
     // Use this for initialization
     void Start ()
@@ -46,11 +48,17 @@ public class Enemy : MonoBehaviour {
     private void OnParticleCollision(GameObject other)
     {
         // print("Particles collided with enemy: " + gameObject.name);
-
         scoreboard.ScoreHit(scorePerHit);
 
-        //
-        EnemyDeathSequence();
+        maxHits = maxHits - 1;
+
+        if(maxHits <= 0)
+        {
+            //
+            EnemyDeathSequence();
+        }
+
+        
     }
 
     /// <summary>

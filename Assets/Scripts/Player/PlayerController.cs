@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
     [Tooltip("In ms^-1")] [SerializeField] private float xControlSpeed = 6.0f;
     [SerializeField] private float xAxisClamp = 4.75f;    // Left/Right limits
     [SerializeField] private float yAxisClamp = 2.5f;    // Up/Down limits
+    [SerializeField] private GameObject[] guns;
+
 
     [Header("Screen Position")]
     [SerializeField] private float positionPitchFactor = -5.0f;
@@ -40,6 +42,9 @@ public class PlayerController : MonoBehaviour {
         {
             ProcessTranslation();
             ProcessRotation();
+
+            // Press space bar to fire
+            ProcessFiring();
 
         }
 
@@ -110,6 +115,37 @@ public class PlayerController : MonoBehaviour {
         print("KillPlayerControls() called");
         isPlayerAlive = false;
 
+    }
+
+
+    private void ProcessFiring()
+    {
+        if(CrossPlatformInputManager.GetButton("Fire"))
+        {
+
+            ActivateGuns();
+
+        } else
+        {
+            DeactivateGuns();
+        }
+
+    }
+
+    private void ActivateGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            gun.SetActive(true);
+        }
+    }
+
+    private void DeactivateGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            gun.SetActive(false);
+        }
     }
 
 }
